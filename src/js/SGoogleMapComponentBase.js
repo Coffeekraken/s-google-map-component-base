@@ -1,4 +1,5 @@
 import SWebComponent from 'coffeekraken-sugar/js/core/SWebComponent'
+import GoogleMapsLoader from 'google-maps'
 
 export default class SGoogleMapComponentBase extends SWebComponent {
 
