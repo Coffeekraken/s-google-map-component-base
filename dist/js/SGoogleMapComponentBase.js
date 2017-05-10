@@ -67,13 +67,12 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
 		}
 
 		/**
-   * _google
    * Get the google api
-   * @type 	{Object}
+   * @type 	{Google}
    */
 
 	}, {
-		key: '_google',
+		key: 'google',
 		get: function get() {
 			return window.google;
 		}
