@@ -1,4 +1,5 @@
 import SWebComponent from 'coffeekraken-sugar/js/core/SWebComponent'
+import GoogleMapsLoader from 'google-maps'
 
 export default class SGoogleMapComponentBase extends SWebComponent {
 
@@ -70,7 +71,7 @@ export default class SGoogleMapComponentBase extends SWebComponent {
 	_loadGoogleApi() {
 		// set some static variables on the google loader
 		if (this.props.apiKey) {
-			GoogleMapsLoader.KEY = this.props.apiKey;
+			GoogleMapsLoader.KEY =  this.props.apiKey;
 		}
 		if (this.props.client) {
 			GoogleMapsLoader.CLIENT = this.props.client;
@@ -97,11 +98,10 @@ export default class SGoogleMapComponentBase extends SWebComponent {
 	}
 
 	/**
-	 * _google
 	 * Get the google api
-	 * @type 	{Object}
+	 * @type 	{Google}
 	 */
-	get _google() {
+	get google() {
 		return window.google;
 	}
 }

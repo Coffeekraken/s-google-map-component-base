@@ -8,6 +8,10 @@ var _SWebComponent2 = require('coffeekraken-sugar/js/core/SWebComponent');
 
 var _SWebComponent3 = _interopRequireDefault(_SWebComponent2);
 
+var _googleMaps = require('google-maps');
+
+var _googleMaps2 = _interopRequireDefault(_googleMaps);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36,26 +40,26 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
 		value: function _loadGoogleApi() {
 			// set some static variables on the google loader
 			if (this.props.apiKey) {
-				GoogleMapsLoader.KEY = this.props.apiKey;
+				_googleMaps2.default.KEY = this.props.apiKey;
 			}
 			if (this.props.client) {
-				GoogleMapsLoader.CLIENT = this.props.client;
+				_googleMaps2.default.CLIENT = this.props.client;
 			}
 			if (this.props.version) {
-				GoogleMapsLoader.VERSION = this.props.version;
+				_googleMaps2.default.VERSION = this.props.version;
 			}
 			if (this.props.libraries) {
-				GoogleMapsLoader.LIBRARIES = this.props.libraries;
+				_googleMaps2.default.LIBRARIES = this.props.libraries;
 			}
 			if (this.props.language) {
-				GoogleMapsLoader.LANGUAGE = this.props.language;
+				_googleMaps2.default.LANGUAGE = this.props.language;
 			}
 			if (this.props.region) {
-				GoogleMapsLoader.REGION = this.props.region;
+				_googleMaps2.default.REGION = this.props.region;
 			}
 			return new Promise(function (resolve, reject) {
 				// load the map api
-				GoogleMapsLoader.load(function (google) {
+				_googleMaps2.default.load(function (google) {
 					// resolve the promise
 					resolve(google);
 				});
@@ -63,13 +67,12 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
 		}
 
 		/**
-   * _google
    * Get the google api
-   * @type 	{Object}
+   * @type 	{Google}
    */
 
 	}, {
-		key: '_google',
+		key: 'google',
 		get: function get() {
 			return window.google;
 		}
