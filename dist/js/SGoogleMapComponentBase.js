@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _SWebComponent2 = require('coffeekraken-sugar/js/core/SWebComponent');
+var _SWebComponent2 = require("coffeekraken-sugar/js/core/SWebComponent");
 
 var _SWebComponent3 = _interopRequireDefault(_SWebComponent2);
 
-var _googleMaps = require('google-maps');
+var _googleMaps = require("google-maps");
 
 var _googleMaps2 = _interopRequireDefault(_googleMaps);
 
@@ -30,7 +30,7 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
 	}
 
 	_createClass(SGoogleMapComponentBase, [{
-		key: '_loadGoogleApi',
+		key: "_loadGoogleApi",
 
 
 		/**
@@ -58,8 +58,16 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
 				_googleMaps2.default.REGION = this.props.region;
 			}
 			return new Promise(function (resolve, reject) {
+				// if exist in cache, return this instance
+				if (window._sGoogleSdk) {
+					resolve(window._sGoogleSdk);
+					return;
+				}
+
 				// load the map api
 				_googleMaps2.default.load(function (google) {
+					// save in window to avoid loading multiple times the api
+					window._sGoogleSdk = google;
 					// resolve the promise
 					resolve(google);
 				});
@@ -72,13 +80,12 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
    */
 
 	}, {
-		key: 'google',
+		key: "google",
 		get: function get() {
-			return window.google;
+			return window._sGoogleSdk || window.google;
 		}
 	}], [{
-		key: 'mountDependencies',
-
+		key: "mountDependencies",
 
 		/**
    * Return a list of promises to resolve before init the component
@@ -96,10 +103,9 @@ var SGoogleMapComponentBase = function (_SWebComponent) {
    */
 
 	}, {
-		key: 'defaultProps',
+		key: "defaultProps",
 		get: function get() {
 			return {
-
 				/**
      * Set the api key used to reach the google services
      * @prop
