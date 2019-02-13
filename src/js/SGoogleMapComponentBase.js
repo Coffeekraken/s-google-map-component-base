@@ -39,7 +39,7 @@ export default class SGoogleMapComponentBase extends SWebComponent {
 			 * @prop
 			 * @type		{String}
 			 */
-			version: null,
+			version: "weekly",
 
 			/**
 			 * Set the libraries to load
