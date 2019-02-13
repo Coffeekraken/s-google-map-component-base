@@ -1,6 +1,6 @@
 {
   "name": "coffeekraken-s-google-map-component-base",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provide a base component class for google map based components that will handle google api loading and mount the component only when all dependencies are ok",
   "main": "dist/index.js",
   "scripts": {
